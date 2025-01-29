@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
+import { LmsModule } from './modules/lms/lms.module';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -31,11 +32,11 @@ function appInitializer(authService: AuthService) {
 
 @NgModule({
   declarations: [AppComponent,
-   
+
   ],
   imports: [
     BrowserModule,
-   
+    LmsModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
     HttpClientModule,
@@ -43,16 +44,16 @@ function appInitializer(authService: AuthService) {
     // #fake-start#
     environment.isMockEnabled
       ? HttpClientInMemoryWebApiModule.forRoot(FakeAPIService, {
-          passThruUnknownUrl: true,
-          dataEncapsulation: false,
-        })
+        passThruUnknownUrl: true,
+        dataEncapsulation: false,
+      })
       : [],
     // #fake-end#
     AppRoutingModule,
     InlineSVGModule.forRoot(),
     NgbModule,
-    
-    
+
+
   ],
   providers: [
     {
@@ -64,4 +65,4 @@ function appInitializer(authService: AuthService) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
