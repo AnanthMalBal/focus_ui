@@ -26,7 +26,7 @@ export const routes: Routes = [
       import('./modules/lms/lms.module').then((m) => m.LmsModule),
     
   },
-  { path: '**', redirectTo: 'lms' },
+  { path: '**', redirectTo: 'auth' },
 ];
 
 @NgModule({

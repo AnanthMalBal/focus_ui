@@ -6,16 +6,13 @@ import { LeavehistoryComponent } from './components/leavehistory/leavehistory.co
 import { LmscalendarComponent } from './components/lmscalendar/lmscalendar.component';
 import { TimesheetComponent } from './components/timesheet/timesheet.component';
 
-const routes: Routes = [{
-  path: '',
-  component: LmsComponent,
-   children:
-    [{ path: '', redirectTo: 'lmscalendar', pathMatch: 'full' },
+const routes: Routes = [
+
     { path: 'applyleave', component: ApplyleaveComponent },
     { path: 'approveleave', component: LeavehistoryComponent },
     { path: 'lmscalendar', component: LmscalendarComponent },
-    { path: 'myattendance', component: TimesheetComponent },]
-}];
+    { path: 'myattendance', component: TimesheetComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
