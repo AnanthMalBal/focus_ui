@@ -7,7 +7,7 @@ import { LmscalendarComponent } from './components/lmscalendar/lmscalendar.compo
 import { TimesheetComponent } from './components/timesheet/timesheet.component';
 
 const routes: Routes = [{
-  path: 'lms',
+  path: '',
   component: LmsComponent,
    children:
     [{ path: '', redirectTo: 'lmscalendar', pathMatch: 'full' },

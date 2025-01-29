@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
 import { LmsModule } from './modules/lms/lms.module';
+import { RouterModule } from '@angular/router';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -37,6 +38,7 @@ function appInitializer(authService: AuthService) {
   imports: [
     BrowserModule,
     LmsModule,
+    RouterModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
     HttpClientModule,

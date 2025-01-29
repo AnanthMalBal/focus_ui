@@ -6,6 +6,13 @@ const Routing: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
+  {
+    path: 'lms',
+    loadChildren: () =>
+      import('../modules/lms/lms.module').then((m) => m.LmsModule),
+    
+  },
+  { path: '**', redirectTo: 'lms' },
   
   {
     path: '**',

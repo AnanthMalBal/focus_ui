@@ -20,6 +20,13 @@ export const routes: Routes = [
       import('./_metronic/layout/layout.module').then((m) => m.LayoutModule),
   },
   { path: '**', redirectTo: 'error/404' },
+  {
+    path: 'lms',
+    loadChildren: () =>
+      import('./modules/lms/lms.module').then((m) => m.LmsModule),
+    
+  },
+  { path: '**', redirectTo: 'lms' },
 ];
 
 @NgModule({
