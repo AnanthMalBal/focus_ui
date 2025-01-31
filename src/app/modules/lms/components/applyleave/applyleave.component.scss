@@ -1,0 +1,14 @@
+a{
+    color: black;
+}
+
+.card-header{
+    background-color: var(--primary);
+    color: white;
+    font-weight: bold;
+  }
+  .log-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

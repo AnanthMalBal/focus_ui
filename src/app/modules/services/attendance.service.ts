@@ -9,37 +9,19 @@ import { AuthModel } from '../auth/models/auth.model';
   providedIn: 'root'
 })
 export class AttendanceService {
- private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
-  constructor(private http:HttpClient) { }
-  addAttendance(symbol:any,mode:any): Observable<any> {
-    console.log("symbolMode",symbol,mode);
-    const auth = this.getAuthFromLocalStorage(); // Get token from localStorage
+
+  constructor(private http: HttpClient) { }
+
+  addAttendance(symbol: any, mode: any): Observable<any> {
+    console.log("symbolMode", symbol, mode);
+
+    return this.http.post(`${environmentpath.markAttendance}`, { "symbol": symbol, "mode": mode }    )
     
-const httpHeaders = new HttpHeaders({
-      Authorization: `${auth?auth.authToken:""}`,
-    });
-    return this.http.post(`${environmentpath.markAttendance}`,{"symbol":symbol,"mode":mode}, 
-      { headers: httpHeaders })
       .pipe(map((result: any) => {
         console.log(result);
-      
-       
+
       }))
-    }
+  }
 
 
-    private getAuthFromLocalStorage(): AuthModel | undefined {
-      try {
-        const lsValue = localStorage.getItem(this.authLocalStorageToken);
-        if (!lsValue) {
-          return undefined;
-        }
-    
-        const authData = JSON.parse(lsValue);
-        return authData;
-      } catch (error) {
-        console.error(error);
-        return undefined;
-      }
-    }
 }

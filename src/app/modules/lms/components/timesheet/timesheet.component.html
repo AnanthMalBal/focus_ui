@@ -1,1 +1,114 @@
-<p>timesheet works!</p>
+<div class="outer">
+    <div class="container mt-2">
+
+        <div class="row app-container p-2">
+            <div class="col-8">
+                <div class="panel ">
+                    <div class="panel-heading">
+                        <h3 class="pt-1 font-weight-bold" style="color:rgb(133, 187, 131);">
+                            Fill Timesheet
+                        </h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="timesheetform" (ngSubmit)="addTimesheet()">
+                            <div class="form-group pt-2 row">
+                                <div class="col-lg-6">
+                                    <h6 style="color:rgb(133, 187, 131);">Select Project</h6>
+                                    <select formControlName="projectId" class="form-control"
+                                        (change)="onProjectChange()">
+                                        <option *ngFor="let i of workdata" [value]="i.projectId">{{i.projectName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h6 style="color:rgb(133, 187, 131);">Select Process</h6>
+                                    <select formControlName="processId" class="form-control"
+                                        (change)="onProcessChange()">
+                                        <!-- <option selected>Choose...</option> -->
+                                        <option *ngFor="let i of depdata" [value]="i.processId">{{i.processName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group pt-2 row">
+                                <!-- <div class="col-lg-6">
+                                    <h6 style="color:rgb(133, 187, 131);">TimesheetID</h6>
+                                    <input formControlName="timesheetId" class="form-control" [value]="timesheetid" readonly type="text">
+                                </div> -->
+
+                                <div class="col-lg-6">
+                                    <h6 style="color:rgb(133, 187, 131);">Billable</h6>
+                                    <input formControlName="billType" class="form-control" [value]="selectedBillType"
+                                        readonly type="text">
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <h6 style="color:rgb(133, 187, 131);">Set Working Minutes</h6>
+                                    <input class="form-control" formControlName="actualTime" type="text">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group pt-2 row">
+                                <div class="col-lg-6">
+                                    <h6 style="color:rgb(133, 187, 131);">Work Descripton</h6>
+                                    <textarea class="form-control" formControlName="description"
+                                        aria-label="With textarea"></textarea>
+                                </div>
+
+                                <!-- <div class="col-lg-6">
+                                    <h6 style="color:rgb(133, 187, 131);">Set Working Minutes</h6>
+                                    <input class="form-control" formControlName="actualTime" type="text">
+
+                                </div> -->
+                            </div>
+
+                            <div class="form-group pt-4 row">
+                                <div class="col-lg-2">
+                                    <button type="submit" style="background-color:var(--primary); color: white;"
+                                        class="btn btn-lg">ADD</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 px-5 py-3">
+                <div class="card border-light ms-4" style="width: 20rem;">
+                    <div class="card-header" style="font-weight: bold;">
+                        Timesheet on Dated: {{sentDate}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item log-item ">Sign In: {{signindata.markedTime | date:'HH:mm:ss' }}
+                        </li>
+                        <li class="list-group-item ">Total Working Minutes: {{workingMin}}
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="card border-light ms-4" style="width: 20rem;">
+                    <div class="card-header" style="font-weight: bold;">
+                        Timesheet Added: {{sentDate}}
+                    </div>
+                    <ul class="list-group list-group-flush" *ngFor="let i of dailylogData let index = index;">
+                        <li class="list-group-item log-item ">{{i.processName}} : {{i.actualTime}}&nbsp;&nbsp;&nbsp;
+                            <i class="fas fa-trash float-end" (click)="deletelog(i.autoId)"
+                                style="align-items: end;margin-right: 0px;"></i>
+                        </li>
+
+                    </ul>
+                    <div class="d-flex justify-content-center">
+                        <button [disabled]=buttonenable (click)="submitTimesheet()"
+                            style="background-color:var(--primary); color: white; font-weight: bolder;"
+                            class="btn btn-md">SUBMIT TIMESHEET</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

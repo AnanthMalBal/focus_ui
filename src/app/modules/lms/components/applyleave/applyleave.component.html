@@ -1,1 +1,107 @@
-<p>applyleave works!</p>
+<div class="outer">
+    <div class="container mt-2">
+
+
+        <div class="row app-container p-2">
+            <div class="col-8">
+                <div class="panel ">
+                    <div class="panel-heading">
+                        <h3 class="pt-1 font-weight-bold" style="color:var(--primary);">
+                            Apply Leave
+                        </h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="leaveform" (ngSubmit)="sumbitLeave()">
+                            <div class="form-group pt-2 row">
+                                <div class="col-lg-6">
+                                    <h6 style="color:var(--primary);">Leave Type</h6>
+                                    <select formControlName="symbol" class="form-control"
+                                        (change)="onLeaveTypeChange()">
+                                        <option selected>Choose...</option>
+                                        <option *ngFor="let i of leavedata" [value]="i.leaveTypeId">{{i.leaveTypeName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group pt-2 row">
+                                <div class="col-lg-6">
+                                    <!-- <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div> -->
+                                    <h6 style="color:var(--primary);">From</h6>
+                                    <div class="row">
+                                        <div class="col-lg-8 input-group date">
+                                            <input class="form-control" [(ngModel)]="from" formControlName="fromDate"
+                                                [min]="minDate" [max]="maxDate" type="date">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <h6 style="color:var(--primary);">To</h6>
+                                    <div class="row">
+                                        <div class="col-lg-8 input-group date">
+                                            <input class="form-control" (change)="onInputChange()" [(ngModel)]="to"
+                                                formControlName="toDate" [min]="minDate" [max]="maxDate" type="date">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group pt-2 row">
+                                <div class="col-lg-6">
+                                    <h6 style="color:var(--primary);">Reason</h6>
+                                    <textarea class="form-control" formControlName="reason"
+                                        aria-label="With textarea"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group pt-2 row">
+                                <div class="col-lg-6">
+                                    <h6 style="color:var(--primary);">No.of Days</h6>
+                                    <input formControlName="noOfDays" type="text" class="form-control"
+                                        [(ngModel)]="daysdiff">
+                                </div>
+                            </div>
+
+                            <div class="form-group pt-4 row">
+                                <div class="col-lg-2">
+                                    <button type="submit" style="background-color:var(--primary);color: white; "
+                                        class="btn btn-lg">SAVE</button>
+                                </div>
+                                <div class="col-lg-2">
+                                    <button (click)="clearform()"  type="button" style="color:var(--primary);"
+                                        class="btn btn-lg">CLEAR</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card border-light mb-3" style="width: 18rem;">
+                    <div class="card-header" style="font-weight: bold;">
+                        Leave Balance
+                    </div>
+                    <ul class="list-group list-group-flush" style="li::before {
+                        color: blue;
+                      }">
+                        <li class="list-group-item">{{description}}
+                            <span class="badge badge-success badge-pill" style="text-align: right;">{{count}}</span>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-center" >
+                        <button  (click)="leavehistory()"
+                            style="background-color:var(--primary); color: white; font-weight: bolder;"
+                            class="btn btn-md">Leave History</button>
+                    </div>  
+                </div>
+            </div>

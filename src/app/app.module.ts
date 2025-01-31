@@ -1,7 +1,7 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ClipboardModule } from 'ngx-clipboard';
 import { TranslateModule } from '@ngx-translate/core';
@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FakeAPIService } from './_fake/fake-api.service';
 import { LmsModule } from './modules/lms/lms.module';
 import { RouterModule } from '@angular/router';
+import { AuthInterceptor } from './interceptor.interceptor';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -37,7 +38,6 @@ function appInitializer(authService: AuthService) {
   ],
   imports: [
     BrowserModule,
-    LmsModule,
     RouterModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
@@ -58,6 +58,7 @@ function appInitializer(authService: AuthService) {
 
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: appInitializer,
