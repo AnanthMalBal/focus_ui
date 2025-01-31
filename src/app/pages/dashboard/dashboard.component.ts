@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AttendanceService } from 'src/app/modules/services/attendance.service';
+import { AttendanceService } from 'src/app/modules/lms/services/attendance.service';
 
 @Component({
   selector: 'app-dashboard',

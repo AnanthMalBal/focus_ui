@@ -1,1 +1,80 @@
-<p>lmscalendar works!</p>
+<div class="outer">
+    <div class="container mt-2">
+  
+      <div class="row app-container p-2">
+        <div class="col-8">
+          <full-calendar [options]="calendarOptions">
+            <!-- <ng-template #eventContent let-arg>
+                    <b>{{arg.timeText}}</b>
+                    <i>{{arg.event.title}}</i>
+                  </ng-template> -->
+          </full-calendar>
+  
+        </div>
+        <div class="col-4">
+  
+          <div class="card border-light mb-3" style="width: 18rem;">
+            <div class="card-header">
+              Mark Attendance-WFH
+            </div>
+            <div class="btn-group btn-group-toggle p-3" data-toggle="buttons">
+             
+              <label class="btn " [ngClass]="{
+                'unclick': selectedToggle !== 'P4',
+                'click': selectedToggle === 'P4',
+              }" [class.active]="selectedToggle === 'P4'" (click)="onToggleClick('P4')">
+                <input type="radio" name="options" id="P4"> 4H
+              </label>
+  
+              <label class="btn " [ngClass]="{
+                'unclick': selectedToggle !== 'P6',
+                'click': selectedToggle === 'P6',
+              }" [class.active]="selectedToggle === 'P6'" (click)="onToggleClick('P6')">
+                <input type="radio" name="options" id="option2"> 6H
+              </label>
+  
+              <label class="btn " [ngClass]="{
+                'unclick': selectedToggle !== 'P8',
+                'click': selectedToggle === 'P8',
+              }" [class.active]="selectedToggle === 'P8'" (click)="onToggleClick('P8')">
+                <input type="radio" name="options" id="option3"> 8H
+              </label>
+  
+            </div>
+          </div>
+  
+          <div class="card border-light mb-3" style="width: 18rem;">
+            <div class="card-header">
+              This Month
+            </div>
+            <ul class="list-group list-group-flush" *ngFor="let i of lmslist let index = index;">
+              <li class="list-group-item {{i.color}} log-item">{{i.title}}
+                <span class="badge badge-success badge-pill">{{i.count}}</span>
+              </li>
+  
+            </ul>
+          </div>
+  
+  
+  
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              Your Leave Balance
+            </div>
+            <!-- *ngFor="let i of leavebal let index = index;" -->
+            <ul class="list-group list-group-flush"  style="li::before {
+                      color: blue;
+                    }">
+              <li class="list-group-item log-item">{{description}}
+                <span class="badge badge-success badge-pill" style="text-align: right;">{{count}}</span>
+              </li>
+            </ul>
+          </div>
+  
+        </div>
+  
+      </div>
+    </div>
+  
+  </div>
+  

@@ -14,26 +14,26 @@ import { SearchComponent } from 'src/app/_metronic/layout/components/aside/tabs/
 // KeeniconComponent
 // D:\2025\newprojects\focus_ui\src\app\_metronic\shared\shared.module.ts
 @NgModule({
-  declarations: [DashboardComponent, ],
-  imports: [
-    CommonModule,
-     SharedModule,
-    CustomerListComponent,
-    RouterModule.forChild([
-        {
-            path: '',
-            component: DashboardComponent,
-        },
-        {
-            path: '',
-            component: SearchComponent
-        },
-        {
-            path: '',
-            component: SearchResultInnerComponent
-        }
-    ]),
-    IncidentListComponent
-],
+    declarations: [DashboardComponent,],
+    imports: [
+        CommonModule,
+        SharedModule,
+        CustomerListComponent,
+        RouterModule.forChild([
+            {
+                path: '',
+                component: DashboardComponent,
+            },
+            {
+                path: '',
+                component: SearchComponent
+            },
+            {
+                path: '',
+                component: SearchResultInnerComponent
+            }
+        ]),
+        IncidentListComponent
+    ],
 })
-export class DashboardModule {}
+export class DashboardModule { }

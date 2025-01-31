@@ -1,1 +1,42 @@
-<p>leavehistory works!</p>
+<div class="outer">
+    <div class="container mt-2">
+
+        <div class="table-responsive custom-scrollbar" style="overflow-x: auto;max-height: 600px; overflow-y: auto;">
+            <table class="table" id="table" data-toggle="table" data-height="300">
+                <thead class="thead" style="background-color: var(--primary);color: white;">
+                    <tr>
+                        <th scope="col">LeaveID</th>
+                        <th scope="col">LeaveType</th>
+                        <th scope="col">FromDate</th>
+                        <th scope="col">ToDate</th>
+                        <th scope="col">NoofDays</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">Comments</th>
+                        <th scope="col">CreatedDate</th>
+                        <th scope="col">ModifiedDate</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Cancel</th>
+
+                    </tr>
+                </thead>
+                <tbody style="max-height: 600px; overflow-y: auto;">
+                    <tr *ngFor="let i of leavedata let index = index;">
+                        <td>{{i.leaveId}}</td>
+                        <td>{{i.symbol}}</td>
+                        <td>{{i.fromDate}}</td>
+                        <td>{{i.toDate}}</td>
+                        <td>{{i.noOfDays}}</td>
+                        <td>{{i.reason}}</td>
+                        <td>{{i.comments}}</td>
+                        <td>{{i.createdDate}}</td>
+                        <td>{{i.modifiedDate}}</td>
+                        <td>{{i.status}}</td>
+                        <td><button type="submit" (click)="cancelleave(i.leaveId)"  [disabled]="(i.status =='Cancel' )" style="background-color:var(--primary);color: white; " class="btn btn-sm">CANCEL</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -7,9 +7,13 @@ import { LeavehistoryComponent } from './components/leavehistory/leavehistory.co
 import { TimesheetComponent } from './components/timesheet/timesheet.component';
 import { LmscalendarComponent } from './components/lmscalendar/lmscalendar.component';
 import { RouterModule } from '@angular/router';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [],
   imports: [
     CommonModule,
@@ -18,8 +22,10 @@ import { RouterModule } from '@angular/router';
     ApplyleaveComponent,
     LeavehistoryComponent,
     LmscalendarComponent,
-    TimesheetComponent
+    TimesheetComponent,
+    FullCalendarModule
   ],
-  // exports: [ApplyleaveComponent, TimesheetComponent, LmscalendarComponent, LeavehistoryComponent] 
-})
+},
+
+)
 export class LmsModule { }
