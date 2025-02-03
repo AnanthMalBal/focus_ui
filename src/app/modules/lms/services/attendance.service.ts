@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { environmentpath } from 'src/app/pages/environments/environments';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -16,7 +16,6 @@ export class AttendanceService {
 
   addAttendance(symbol: any, mode: any): Observable<any> {
     console.log("symbolMode", symbol, mode);
-
     return this.http.post(`${environmentpath.markAttendance}`, { "symbol": symbol, "mode": mode },
      )
       .pipe(map((result: any) => {
@@ -25,6 +24,16 @@ export class AttendanceService {
 
       }))
   }
+
+  getMarkattendance(): Observable<any>{
+    return this.http.post(`${environmentpath.getMarkAttendance}`,{})
+    .pipe(
+      tap(result => console.log("MarkAttendance fetched:", result)), 
+      catchError(error => {
+        console.error("Error fetching MarkAttendance:", error);
+        return throwError(() => error); 
+      })
+    );  }
 
 
 

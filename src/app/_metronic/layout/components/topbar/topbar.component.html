@@ -21,29 +21,7 @@
 </div> -->
 <!--end::Create app-->
 
-
-<!-- navBar -->
-
-<!-- <nav class="navbar navbar-expand-lg   d-flex justify-content-between align-items-start" style="font-size: 16px;">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarNav" routerLinkActive="here show" style="padding-top: 1rem;">
-    <ul class="navbar-nav">
-      <li class="nav-item" *ngFor="let menuItem of menuItems">
-         <!-- Apply the btn classes to the anchor tags for button-like styling     
-        <a class=" nav-link btn btn-active-primary btn-color-gray-500 fw-bold " [routerLink]="menuItem.actionURL" [title]="menuItem.menuName" style=" font-size: 16px;">
-          <i [class]="menuItem.cssClassIcon"></i> {{ menuItem.menuName }}
-        </a>
-      </li>
-    </ul>
-  
-
-
-</div>
-</nav>  -->
-<nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-start" style="font-size: 16px;">
+ <!-- <nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-start" style="font-size: 16px;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -54,7 +32,7 @@
           [ngClass]="{ 'has-submenu': menuItem.children?.length > 0 }"
           (mouseenter)="toggleSubMenu(menuItem)" 
           (mouseleave)="toggleSubMenu(menuItem)">
-        <!-- Main menu item -->
+        <!--  Main menu item  
         <a class="nav-link btn btn-active-primary btn-color-gray-500 fw-bold"
            [routerLink]="menuItem.actionURL"
            (click)="openSubMenu(menuItem)"  
@@ -62,7 +40,7 @@
           <i [class]="menuItem.cssClassIcon"></i> {{ menuItem.menuName }}
         </a>
 
-        <!-- Submenu (inside a card-like container) -->
+        <!-- Submenu (inside a card-like container)  
         <div *ngIf="menuItem.children?.length > 0 && menuItem.isOpen" class="submenu-card mt-0" style="position: absolute; left: 2; z-index: 100;">
           <div class="card mt-0" style="width: 200px;">
             <div class="card-body">
@@ -88,16 +66,59 @@
       </li>
     </ul>
   </div>
-</nav>
-<!--begin::Chat-->
+</nav>  -->
+
+<!-- for mark attendance -->
+<div class="d-flex justify-content-end fw-bold ms-3 ">
+  <!-- Mark Attendance Text -->
+  <div class="d-flex align-items-center mt-2" >
+    <span>Mark Attendance</span>
+  </div>
+
+  <!-- Button Group -->
+  <div class="d-flex justify-content-end">
+    <!-- Button for 4H -->
+    <button 
+      class="btn btn-sm  ms-3 mt-3" 
+      [ngClass]="{'btn-primary': markedHours === 'P4', 'btn-light-primary': markedHours !== 'P4'}"
+     
+      (click)="onToggleClick('P4')"
+     
+    >
+      4H
+    </button>
+
+    <!-- Button for 6H -->
+    <button 
+      class="btn btn-sm ms-3 mt-3" 
+      [ngClass]="{'btn-primary': markedHours === 'P6', 'btn-light-primary': markedHours !== 'P6'}"
+      
+      (click)="onToggleClick('P6')"
+    >
+      6H
+    </button>
+
+    <!-- Button for 8H -->
+    <button 
+      class="btn btn-sm ms-3 mt-3" 
+      [ngClass]="{'btn-primary': markedHours === 'P8', 'btn-light-primary': markedHours !== 'P8'}"
+     
+      (click)="onToggleClick('P8')"
+    >
+      8H
+    </button>
+  </div>
+</div>
+
+<!-- begin::Chat
 <div class="d-flex align-items-center ms-3 mt-2">
-  <!--begin::Menu wrapper-->
+  <!--begin::Menu wrapper
   <div class="btn btn-icon btn-primary w-40px h-40px pulse pulse-white" id="kt_drawer_chat_toggle">
     <span [inlineSVG]="'./assets/media/icons/duotune/communication/com012.svg'" class="svg-icon svg-icon-2"></span>
     <span class="pulse-ring"></span>
   </div>
-  <!--end::Menu wrapper-->
-</div>
+  <!--end::Menu wrapper
+</div> -->
 
 <!--end::Chat-->
 
