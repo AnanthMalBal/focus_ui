@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { first } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 enum ErrorStates {
   NotSubmitted,
@@ -20,15 +21,17 @@ export class ForgotPasswordComponent implements OnInit {
   errorState: ErrorStates = ErrorStates.NotSubmitted;
   errorStates = ErrorStates;
   isLoading$: Observable<boolean>;
+  returnUrl: string;
 
   // private fields
   private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute,) {
     this.isLoading$ = this.authService.isLoading$;
   }
 
   ngOnInit(): void {
     this.initForm();
+
   }
 
   // convenience getter for easy access to form fields
@@ -57,6 +60,11 @@ export class ForgotPasswordComponent implements OnInit {
       .pipe(first())
       .subscribe((result: boolean) => {
         this.errorState = result ? ErrorStates.NoError : ErrorStates.HasError;
+        console.log('forgot-password triggered', this.errorState);
+        if(this.errorState===2){
+          console.log('forgot-password triggered----', this.errorState);
+          this.router.navigate(["/auth/change-password"]);
+        }
       });
     this.unsubscribe.push(forgotPasswordSubscr);
   }

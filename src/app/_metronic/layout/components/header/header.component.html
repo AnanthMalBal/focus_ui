@@ -1,40 +1,37 @@
 <div [ngClass]="headerContainerCssClasses" class="d-flex align-items-center justify-content-between"
   id="kt_header_container">
   <nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-start" style="font-size: 16px;">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarNav" routerLinkActive="here show" style="padding-top: 1rem;">
       <ul class="navbar-nav">
-        <li *ngFor="let menuItem of menuItems" class="nav-item" 
-            [ngClass]="{ 'has-submenu': menuItem.children?.length > 0 }"
-            (mouseenter)="toggleSubMenu(menuItem)" 
-            (mouseleave)="toggleSubMenu(menuItem)">
+        <li *ngFor="let menuItem of menuItems" class="nav-item"
+          [ngClass]="{ 'has-submenu': menuItem.children?.length > 0 }" (mouseenter)="toggleSubMenu(menuItem)"
+          (mouseleave)="toggleSubMenu(menuItem)">
           <!--  Main menu item  -->
-          <a class="nav-link btn btn-active-primary btn-color-gray-500 fw-bold"
-             [routerLink]="menuItem.actionURL"
-             (click)="openSubMenu(menuItem)"  
-             style="font-size: 16px;">
+          <a class="nav-link btn btn-active-primary btn-color-gray-500 fw-bold" [routerLink]="menuItem.actionURL"
+            (click)="openSubMenu(menuItem)" style="font-size: 16px;">
             <i [class]="menuItem.cssClassIcon"></i> {{ menuItem.menuName }}
           </a>
-  
+
           <!-- Submenu (inside a card-like container)  -->
-          <div *ngIf="menuItem.children?.length > 0 && menuItem.isOpen" class="submenu-card mt-0" style="position: absolute; left: 2; z-index: 100;">
-            <div class="card mt-0" style="width: 200px;">
+          <div *ngIf="menuItem.children?.length > 0 && menuItem.isOpen" class="submenu-card mt-0"
+            style="position: absolute; left: 2; z-index: 100;">
+            <div class="card mt-0 " style="width: 200px;
+            padding: 10px;
+            box-shadow: 5px 10px 8px 10px #e5ebe8;">
               <div class="card-body">
                 <ul class="navbar-nav">
-                  <li class="nav-item" >
+                  <li class="nav-item">
                     <a *ngFor="let subMenu of menuItem.children" class="nav-link fw-bold"
-                       [routerLink]="subMenu.actionURL" 
-                       [title]="subMenu.menuName"
-                       (click)="onSubMenuClick(subMenu)"
-                       [ngStyle]="{
+                      [routerLink]="subMenu.actionURL" [title]="subMenu.menuName" (click)="onSubMenuClick(subMenu)"
+                      [ngStyle]="{
                          'color': activeSubMenu === subMenu.menuId ? '#04b440' : (hoveredSubMenu === subMenu.menuId ? '#04b440' : 'gray')
-                       }"
-                       (mouseenter)="onSubMenuHover(subMenu.menuId)"
-                       (mouseleave)="onSubMenuLeave()">
-                      <i [class]="subMenu.cssClassIcon.trim()"></i> 
+                       }" (mouseenter)="onSubMenuHover(subMenu.menuId)" (mouseleave)="onSubMenuLeave()">
+                      <i [class]="subMenu.cssClassIcon.trim()"></i>
                       {{ subMenu.menuName }}
                     </a>
                   </li>
@@ -45,7 +42,7 @@
         </li>
       </ul>
     </div>
-  </nav> 
+  </nav>
   <app-page-title #ktPageTitle
     class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap mt-n5 mt-lg-0 me-lg-2 pb-2 pb-lg-0"
     data-kt-swapper="true" data-kt-swapper-mode="prepend"
@@ -65,7 +62,7 @@
     <!--end::Logo-->
   </div>
   <!-- end::Wrapper -->
-  
+
 
   <app-topbar class="d-flex flex-shrink-0"></app-topbar>
 </div>

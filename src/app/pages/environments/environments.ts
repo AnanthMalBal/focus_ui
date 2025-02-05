@@ -8,6 +8,8 @@ export const environmentpath={
   apiUrl: 'http://localhost:9000',
   menuUrl:"http://localhost:9000/stashook/menuList",
 
+  forgotPassword:"http://localhost:9000/stashook/forgotPassword",
+
   markAttendance:"http://localhost:9100/stashook/markAttendance",
   getMarkAttendance:"http://localhost:9100/stashook/getMarkedAttendance",
 

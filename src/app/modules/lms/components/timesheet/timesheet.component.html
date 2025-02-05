@@ -76,13 +76,13 @@
             </div>
             <div class="col-4 px-5 py-3">
                 <div class="card border-light ms-4" style="width: 20rem;">
-                    <div class="card-header " >
+                    <div class="card-header mt-5" >
                       <h6 class="gray opacity-50">  Timesheet on Dated: {{sentDate}}</h6>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item log-item ">Sign In: {{signindata.markedTime | date:'HH:mm:ss' }}
+                        <li class="list-group-item log-item gray opacity-50">Sign In: {{signindata.markedTime | date:'HH:mm:ss' }}
                         </li>
-                        <li class="list-group-item ">Total Working Minutes: {{workingMin}}
+                        <li class="list-group-item gray opacity-50">Total Working Minutes: {{workingMin}}
                         </li>
 
                     </ul>
@@ -92,8 +92,8 @@
                     <div class="card-header gray opacity-50" >
                         Timesheet Added: {{sentDate}}
                     </div>
-                    <ul class="list-group list-group-flush" *ngFor="let i of dailylogData let index = index;">
-                        <li class="list-group-item log-item ">{{i.processName}} : {{i.actualTime}}&nbsp;&nbsp;&nbsp;
+                    <ul class="list-group list-group-flush gray opacity-50" *ngFor="let i of dailylogData let index = index;">
+                        <li class="list-group-item log-item gray opacity-50">{{i.processName}} : {{i.actualTime}}&nbsp;&nbsp;&nbsp;
                             <i class="fas fa-trash float-end" (click)="deletelog(i.autoId)"
                                 style="align-items: end;margin-right: 0px;"></i>
                         </li>
@@ -102,7 +102,7 @@
                     <div class="d-flex justify-content-center">
                         <button [disabled]=buttonenable (click)="submitTimesheet()"
                            
-                            class="btn btn-sm btn-light-primary ms-2">SUBMIT TIMESHEET</button>
+                            class="btn btn-sm btn-light-primary ms-2 gray opacity-50">SUBMIT TIMESHEET</button>
                     </div>
 
                 </div>
