@@ -65,7 +65,7 @@ export class IncidentListComponent implements OnInit{
         searchIncedent(searchText:string){
           this.incidentService.searchIncident(searchText).pipe(
             tap((res) => {
-              console.log("ResIncident Data",res);
+              // console.log("ResIncident Data",res);
               this.allIncident= res.data;
         }),
             catchError((errorMessage) => {

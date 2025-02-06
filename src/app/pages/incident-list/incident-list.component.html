@@ -1,4 +1,4 @@
-<div style="visibility: hidden;"> {{allIncident.length}} </div>
+<!-- <p style="visibility: hidden;"> {{allIncident.length}} </p> -->
 
 <!-- begin::Header -->
 
@@ -188,10 +188,10 @@
             <input type="text" class="form-control" id="customerId" formControlName="customerId"
               placeholder="Enter customer's Id" required>
             <small class="text-muted">Customer's Id Required</small>
-            <div
+            <!-- <div
               *ngIf="incidentForm.get('customerId')?.hasError('pattern') && incidentForm.get('customerId')?.touched">
               <small class="text-danger">Customer 's Id Required.</small>
-            </div>
+            </div> -->
           </div>
 
           <div class="mb-3">
