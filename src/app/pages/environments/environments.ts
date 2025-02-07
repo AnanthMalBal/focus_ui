@@ -9,6 +9,7 @@ export const environmentpath={
   menuUrl:"http://localhost:9000/stashook/menuList",
 
   forgotPassword:"http://localhost:9000/stashook/forgotPassword",
+  changePassword:"http://localhost:9000/stashook/changePassword",
 
   markAttendance:"http://localhost:9100/stashook/markAttendance",
   getMarkAttendance:"http://localhost:9100/stashook/getMarkedAttendance",

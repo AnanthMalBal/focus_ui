@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environmentpath } from 'src/app/pages/environments/environments';
 
-export type UserType = UserModel| undefined;
+export type UserType = UserModel | undefined;
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +39,7 @@ export class AuthService implements OnDestroy {
     private router: Router,
     private http: HttpClient,
   ) {
-    
+
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.isLoading$ = this.isLoadingSubject.asObservable();
 
@@ -55,27 +55,27 @@ export class AuthService implements OnDestroy {
 
   // public methods
   login(email: string, password: string): Observable<any> {
-    console.log("auth",email,password);
+    console.log("auth", email, password);
     this.isLoadingSubject.next(true);
     return this.authHttpService.login(email, password).pipe(
-      map((auth: UserType| undefined) => {
-        
+      map((auth: UserType | undefined) => {
+
         if (!auth) {
           throw new Error("Authentication response is undefined."); // Guard against undefined auth
         }
         const result = this.setAuthFromLocalStorage(auth);
-        console.log("auth--",auth);
-        console.log("result--",result);
-       
-      // Extract roles and convert to a comma-separated string
-      const rolesArray = auth.user?.roles || [];
-      const roles = rolesArray.join(', '); // Convert array to "Admin, Employee"
-      console.log("roles--", roles);
+        console.log("auth--", auth);
+        console.log("result--", result);
 
-       // Fetch menu after successful login
-       this.getmenu(roles); 
+        // Extract roles and convert to a comma-separated string
+        const rolesArray = auth.user?.roles || [];
+        const roles = rolesArray.join(', '); // Convert array to "Admin, Employee"
+        console.log("roles--", roles);
 
-        
+        // Fetch menu after successful login
+        this.getmenu(roles);
+
+
         return auth;
       }),
       switchMap(() => this.getUserByToken()),
@@ -86,7 +86,7 @@ export class AuthService implements OnDestroy {
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
-  
+
   // getmenu(role: any): Observable<any> {
   //   console.log("roles",role);
   //   return this.http.post(`${environmentpath.menuUrl}`, {roles:role})
@@ -95,22 +95,22 @@ export class AuthService implements OnDestroy {
 
   getmenu(role: string): void {
     console.log('Roles received:', role);
-   // Get the auth token from localStorage
-  const auth = this.getAuthFromLocalStorage(); // Assuming this method returns the auth object
- 
-  
-  // Set up HTTP headers with Authorization
-  const httpHeaders = new HttpHeaders({
-    Authorization: `${auth?auth.authToken:""}`,
-  });
+    // Get the auth token from localStorage
+    const auth = this.getAuthFromLocalStorage(); // Assuming this method returns the auth object
+
+
+    // Set up HTTP headers with Authorization
+    const httpHeaders = new HttpHeaders({
+      Authorization: `${auth ? auth.authToken : ""}`,
+    });
     this.http
-      .post(`${environmentpath.menuUrl}`, { roles: role },{ headers: httpHeaders })
+      .post(`${environmentpath.menuUrl}`, { roles: role }, { headers: httpHeaders })
       .pipe(
         tap((response: any) => {
           console.log('Menu response:', response); // Check the structure
           if (response && response.length > 0) {
             // Emit the received menu items
-            this.menuSubject.next(response); 
+            this.menuSubject.next(response);
           } else {
             this.menuSubject.next([]); // Emit empty array if no data
           }
@@ -134,7 +134,7 @@ export class AuthService implements OnDestroy {
   }
 
   getUserByToken(): Observable<UserType> {
-    
+
     const auth = this.getAuthFromLocalStorage();
     if (!auth || !auth.authToken) {
       return of(undefined);
@@ -170,17 +170,32 @@ export class AuthService implements OnDestroy {
     );
   }
 
-  forgotPassword(email: string): Observable<boolean> {
+  forgotPassword(email: string): Observable<any> {
+    // this.isLoadingSubject.next(true);
+    return this.authHttpService
+      .forgotPassword(email).pipe(
+        map((result) => {
+          console.log("in fp service",result.passwordtoken)
+          const passwordtoken = result.passwordtoken
+          localStorage.setItem('passwordToken', passwordtoken);
+          // this.isLoadingSubject.next(false);
+        }),
+        finalize(() => this.isLoadingSubject.next(false)
+        ));
+  }
+
+  changePassword(formdata: any): Observable<any> {
+    console.log("changepassword", formdata)
     this.isLoadingSubject.next(true);
     return this.authHttpService
-      .forgotPassword(email)
+      .changePassword(formdata)
       .pipe(finalize(() => this.isLoadingSubject.next(false)));
   }
 
   // private methods
   private setAuthFromLocalStorage(auth: UserType): boolean {
     // store auth authToken/refreshToken/epiresIn in local storage to keep user logged in between page refreshes
-    console.log("SetAuth",auth);
+    console.log("SetAuth", auth);
     if (auth && auth.authToken) {
       localStorage.setItem(this.authLocalStorageToken, JSON.stringify(auth));
       return true;
