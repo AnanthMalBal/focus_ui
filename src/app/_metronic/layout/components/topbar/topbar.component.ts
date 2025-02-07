@@ -8,24 +8,24 @@ import { AttendanceService } from 'src/app/modules/lms/services/attendance.servi
 })
 export class TopbarComponent implements OnInit{
 
- 
-  // for mark attendance 
+
+  // for mark attendance
   selectedToggle: string = '';
   mode="WFH";
 
-  // for getMarkattendance 
+  // for getMarkattendance
   markedHours:any;
-  
+
   constructor(private authService: AuthService,
     private attendanceservice:AttendanceService,
   ) {}
   ngOnInit(): void {
-  
-    this.getsignin();
-  
+
+    // this.getsignin();
+
   }
- 
-  // method for markattendance 
+
+  // method for markattendance
   onToggleClick(option: string) {
     this.selectedToggle = option;
     console.log('Selected Option:', this.selectedToggle);
@@ -33,7 +33,7 @@ export class TopbarComponent implements OnInit{
     .subscribe((res: any)=>{
       console.log('onToggleClick',res)
        // Update markedHours so the UI reflects the selected attendance immediately
-       this.markedHours = this.selectedToggle; 
+       this.markedHours = this.selectedToggle;
     })
 
   }
