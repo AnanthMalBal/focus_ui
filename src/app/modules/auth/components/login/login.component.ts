@@ -15,7 +15,7 @@ export type UserType = AuthModel | undefined;
 })
 export class LoginComponent implements OnInit, OnDestroy {
   defaultAuth: any = {
-     userId: '15007',
+     userId: '15006',
      password: 'Test@1234',
   };
   loginForm: FormGroup;
@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     this.isLoading$ = this.authService.isLoading$;
     // redirect to home if already logged in
@@ -82,8 +83,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log(this.returnUrl, "user", user);
         if (user) {
           this.router.navigate([this.returnUrl]);
+          this.cdr.detectChanges();
+
         } else {
           this.hasError = true;
+          this.cdr.detectChanges();
+
         }
       });
     this.unsubscribe.push(loginSubscr);

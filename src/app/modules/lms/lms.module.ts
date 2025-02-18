@@ -9,8 +9,8 @@ import { LmscalendarComponent } from './components/lmscalendar/lmscalendar.compo
 import { RouterModule } from '@angular/router';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-
+import { EmployeeReportsComponent } from './components/employee-reports/employee-reports.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -23,8 +23,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     LeavehistoryComponent,
     LmscalendarComponent,
     TimesheetComponent,
-    FullCalendarModule
-  ],
+    EmployeeReportsComponent,
+    FullCalendarModule,
+    NgApexchartsModule,
+  ]
 },
 
 )

@@ -1,19 +1,21 @@
-<div [ngClass]="headerContainerCssClasses" class="d-flex align-items-center justify-content-between"
-  id="kt_header_container">
-  <nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-start" style="font-size: 16px;">
+<div style="
+padding: 10px;
+box-shadow: 5px 5px 5px 5px #c8cfcc;" [ngClass]="headerContainerCssClasses"
+  class="d-flex align-items-center justify-content-between" id="kt_header_container">
+  <nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-start" style="font-size: 14px;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav" routerLinkActive="here show" style="padding-top: 1rem;">
+    <div class="collapse navbar-collapse" id="navbarNav" routerLinkActive="here show" >
       <ul class="navbar-nav">
         <li *ngFor="let menuItem of menuItems" class="nav-item"
           [ngClass]="{ 'has-submenu': menuItem.children?.length > 0 }" (mouseenter)="toggleSubMenu(menuItem)"
           (mouseleave)="toggleSubMenu(menuItem)">
           <!--  Main menu item  -->
           <a class="nav-link btn btn-active-primary btn-color-gray-500 fw-bold" [routerLink]="menuItem.actionURL"
-            (click)="openSubMenu(menuItem)" style="font-size: 16px;">
+            (click)="openSubMenu(menuItem)" style="font-size: 14px;">
             <i [class]="menuItem.cssClassIcon"></i> {{ menuItem.menuName }}
           </a>
 

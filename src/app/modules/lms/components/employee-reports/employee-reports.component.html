@@ -1,0 +1,17 @@
+<div class="chart-container">
+    <apx-chart [series]="chartOptions!.series" [chart]="chartOptions!.chart" [xaxis]="chartOptions!.xaxis"
+        [yaxis]="chartOptions!.yaxis" [title]="chartOptions!.title" [legend]="chartOptions!.legend"
+        [dataLabels]="chartOptions!.dataLabels"></apx-chart>
+</div>
+
+<div class="piechart">
+    <apx-chart style="margin-top:20px ;" [series]="pieChartOptions.series" [chart]="pieChartOptions.chart"
+        [title]="pieChartOptions!.title" [labels]="pieChartOptions.labels" [colors]="pieChartOptions.colors"
+        [responsive]="pieChartOptions.responsive"></apx-chart>
+</div>
+
+<div class="dailyLogChart">
+    <apx-chart [series]="dailyLogChart!.series" [chart]="dailyLogChart!.chart" [xaxis]="dailyLogChart!.xaxis"
+        [yaxis]="dailyLogChart!.yaxis" [title]="dailyLogChart!.title" [legend]="dailyLogChart!.legend"
+        [dataLabels]="dailyLogChart!.dataLabels"></apx-chart>
+</div>

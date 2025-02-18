@@ -15,6 +15,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
@@ -54,7 +55,7 @@ function appInitializer(authService: AuthService) {
     AppRoutingModule,
     InlineSVGModule.forRoot(),
     NgbModule,
-
+    NgApexchartsModule
 
   ],
   providers: [

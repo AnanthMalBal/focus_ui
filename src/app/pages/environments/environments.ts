@@ -30,9 +30,9 @@ export const environmentpath={
   getLeaveHolidayColor:"http://localhost:9100/stashook/getLeaveHolidayColor",
   getLeaveBalance:"http://localhost:9100/stashook/getLeaveBalance",
 
-
-
-
+  getEmpChart:"http://localhost:3000/leave",
+  getEmpChartById:"http://localhost:3000/leave?empId=",
+  getDailyLogEntry:"http://localhost:3000/dailyLogEntry",
 
   // searchCustomer :'http://localhost:9201/stashook/searchCustomer',
   // addCustomer :'http://localhost:9201/stashook/addCustomer',

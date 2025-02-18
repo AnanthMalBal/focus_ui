@@ -14,14 +14,13 @@ export class TopbarComponent implements OnInit{
   mode="WFH";
 
   // for getMarkattendance
-  markedHours:any;
 
   constructor(private authService: AuthService,
     private attendanceservice:AttendanceService,
   ) {}
   ngOnInit(): void {
 
-    // this.getsignin();
+     this.getsignin();
 
   }
 
@@ -33,7 +32,6 @@ export class TopbarComponent implements OnInit{
     .subscribe((res: any)=>{
       console.log('onToggleClick',res)
        // Update markedHours so the UI reflects the selected attendance immediately
-       this.markedHours = this.selectedToggle;
     })
 
   }
@@ -42,9 +40,8 @@ export class TopbarComponent implements OnInit{
     this.attendanceservice.getMarkattendance()
       .subscribe((res) => {
         const markedData=res;
-         this.markedHours = markedData.symbol;
-        console.log("markedhours",this.markedHours)
-        this.selectedToggle = this.markedHours;
+         this.selectedToggle = markedData.symbol;
+        console.log("markedhours",this.selectedToggle)
 
       })
   }

@@ -69,7 +69,7 @@ export class AuthService implements OnDestroy {
 
         // Extract roles and convert to a comma-separated string
         const rolesArray = auth.user?.roles || [];
-        const roles = rolesArray.join(', '); // Convert array to "Admin, Employee"
+        const roles = rolesArray.join(','); // Convert array to "Admin, Employee"
         console.log("roles--", roles);
 
         // Fetch menu after successful login
@@ -94,7 +94,7 @@ export class AuthService implements OnDestroy {
   // }
 
   getmenu(role: string): void {
-    console.log('Roles received:', role);
+    console.log('Roles received:',role);
     // Get the auth token from localStorage
     const auth = this.getAuthFromLocalStorage(); // Assuming this method returns the auth object
 

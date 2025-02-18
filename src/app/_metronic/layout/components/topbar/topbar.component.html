@@ -78,10 +78,19 @@
   <!-- Button Group -->
   <div class="d-flex justify-content-end">
     <!-- Button for 4H -->
+
+    <!-- <label class="btn " [ngClass]="{
+      'unclick': selectedToggle !== 'P4',
+      'click': selectedToggle === 'P4',
+    }" [class.active]="selectedToggle === 'P4'" (click)="onToggleClick('P4')">
+      <input type="radio" name="options" id="P4"> 4H
+    </label> -->
+
     <button 
       class="btn btn-sm  ms-3 mt-3" 
-      [ngClass]="{'btn-primary': markedHours === 'P4', 'btn-light-primary': markedHours !== 'P4'}"
-     
+      [ngClass]="{'btn-primary': selectedToggle === 'P4', 'btn-light-primary': selectedToggle !== 'P4'}"
+      [class.active]="selectedToggle === 'P4'"
+      type="radio" name="options" id="P4"
       (click)="onToggleClick('P4')"
      
     >
@@ -91,8 +100,9 @@
     <!-- Button for 6H -->
     <button 
       class="btn btn-sm ms-3 mt-3" 
-      [ngClass]="{'btn-primary': markedHours === 'P6', 'btn-light-primary': markedHours !== 'P6'}"
-      
+      [ngClass]="{'btn-primary': selectedToggle === 'P6', 'btn-light-primary': selectedToggle !== 'P6'}"
+      [class.active]="selectedToggle === 'P6'"
+      type="radio" name="options" id="P6"
       (click)="onToggleClick('P6')"
     >
       6H
@@ -101,8 +111,9 @@
     <!-- Button for 8H -->
     <button 
       class="btn btn-sm ms-3 mt-3" 
-      [ngClass]="{'btn-primary': markedHours === 'P8', 'btn-light-primary': markedHours !== 'P8'}"
-     
+      [ngClass]="{'btn-primary': selectedToggle === 'P8', 'btn-light-primary': selectedToggle !== 'P8'}"
+      [class.active]="selectedToggle === 'P8'"
+      type="radio" name="options" id="P8"
       (click)="onToggleClick('P8')"
     >
       8H
