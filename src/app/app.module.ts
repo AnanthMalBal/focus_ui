@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { ToastrModule } from 'ngx-toastr'; 
 
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
@@ -55,7 +56,15 @@ function appInitializer(authService: AuthService) {
     AppRoutingModule,
     InlineSVGModule.forRoot(),
     NgbModule,
-    NgApexchartsModule
+    LmsModule,
+    NgApexchartsModule,
+    ToastrModule.forRoot({  // Global Toastr Configuration
+      timeOut: 5000,  // Auto close time (3 sec)
+      positionClass: 'toast-center-center', // Position of toast
+      // progressBar: true, // Show progress bar
+      // closeButton: true, // Show close button
+    })
+    
 
   ],
   providers: [

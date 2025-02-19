@@ -11,6 +11,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { EmployeeReportsComponent } from './components/employee-reports/employee-reports.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -26,6 +27,13 @@ import { NgApexchartsModule } from "ng-apexcharts";
     EmployeeReportsComponent,
     FullCalendarModule,
     NgApexchartsModule,
+    ToastrModule.forRoot({  // Global Toastr Configuration
+      timeOut: 5000,  // Auto close time (3 sec)
+      positionClass: 'toast-top-center', // Position of toast
+      // progressBar: true, // Show progress bar
+       closeButton: true, // Show close button
+    })
+
   ]
 },
 

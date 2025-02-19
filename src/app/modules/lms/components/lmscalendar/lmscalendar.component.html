@@ -3,6 +3,7 @@
   
       <div class="row app-container p-2">
         <div class="col-8">
+          <button (click)="showSuccess()" class="btn btn-success">Show Success</button>
           <full-calendar [options]="calendarOptions">
             <!-- <ng-template #eventContent let-arg>
                     <b>{{arg.timeText}}</b>
