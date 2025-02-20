@@ -94,7 +94,7 @@ export class AuthService implements OnDestroy {
   // }
 
   getmenu(role: string): void {
-    console.log('Roles received:',role);
+    console.log('Roles received:', role);
     // Get the auth token from localStorage
     const auth = this.getAuthFromLocalStorage(); // Assuming this method returns the auth object
 
@@ -175,7 +175,7 @@ export class AuthService implements OnDestroy {
     return this.authHttpService
       .forgotPassword(email).pipe(
         map((result) => {
-          console.log("in fp service",result.passwordtoken)
+          console.log("in fp service", result.passwordtoken)
           const passwordtoken = result.passwordtoken
           localStorage.setItem('passwordToken', passwordtoken);
           // this.isLoadingSubject.next(false);
@@ -203,13 +203,12 @@ export class AuthService implements OnDestroy {
     return false;
   }
 
-  private getAuthFromLocalStorage(): AuthModel | undefined {
+   getAuthFromLocalStorage(): AuthModel | undefined {
     try {
       const lsValue = localStorage.getItem(this.authLocalStorageToken);
       if (!lsValue) {
         return undefined;
       }
-
       const authData = JSON.parse(lsValue);
       return authData;
     } catch (error) {
