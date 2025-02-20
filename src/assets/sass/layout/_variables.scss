@@ -5,7 +5,7 @@
 // Root font Sizes
 $root-font-size:                                    13px; // Root font size for desktop mode
 $root-font-size-lg:                             	13px; // Root font size for tablet mode
-$root-font-size-md:                             	12px; // Root font size for mobile mode 
+$root-font-size-md:                             	12px; // Root font size for mobile mode
 
 // Page background Color
 $page-bg: 											$white;
@@ -97,11 +97,11 @@ $aside-config: (
 	bg-color: $body-bg,
 	bg-color-dark: $coal-400,
 	width: (
-		desktop: 425px, 
+		desktop: 100px,
 		tablet-and-mobile: 300px
 	),
 	primary-width: (
-		desktop: 100px, 
+		desktop: 100px,
 		tablet-and-mobile: 70px
 	),
 	z-index: 98, // Aside's z-index property
