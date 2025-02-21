@@ -1,10 +1,32 @@
-<div class="chart-container">
-    <apx-chart [series]="chartOptions!.series" [chart]="chartOptions!.chart" [xaxis]="chartOptions!.xaxis"
-        [yaxis]="chartOptions!.yaxis" [title]="chartOptions!.title" [legend]="chartOptions!.legend"
-        [dataLabels]="chartOptions!.dataLabels"></apx-chart>
+<div class="card card-xxl-stretch mb-5 mb-xxl-8">
+    <div class="card-header border-0 pt-5">
+        <ul class="nav">
+            <li class="nav-item"><a data-bs-toggle="tab"
+                    class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 show active">
+                    Weekly </a></li>
+            <li class="nav-item"><a data-bs-toggle="tab"
+                    class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1">
+                    Monthly </a></li>
+            <li class="nav-item"><a data-bs-toggle="tab"
+                    class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4">
+                    Quaterly </a></li>
+            <li class="nav-item"><a data-bs-toggle="tab"
+                    class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4">
+                    Yearly </a></li>
+        </ul>
+        <div class="card-toolbar">
+
+        </div>
+    </div>
+    <div class="chart-container mt-5">
+        <apx-chart [series]="chartOptions!.series" [chart]="chartOptions!.chart" [xaxis]="chartOptions!.xaxis"
+            [yaxis]="chartOptions!.yaxis" [title]="chartOptions!.title" [legend]="chartOptions!.legend"
+            [dataLabels]="chartOptions!.dataLabels"></apx-chart>
+    </div>
 </div>
 
-<div class="piechart">
+
+<!-- <div class="piechart">
     <apx-chart style="margin-top:20px ;" [series]="pieChartOptions.series" [chart]="pieChartOptions.chart"
         [title]="pieChartOptions!.title" [labels]="pieChartOptions.labels" [colors]="pieChartOptions.colors"
         [responsive]="pieChartOptions.responsive"></apx-chart>
@@ -14,4 +36,4 @@
     <apx-chart [series]="dailyLogChart!.series" [chart]="dailyLogChart!.chart" [xaxis]="dailyLogChart!.xaxis"
         [yaxis]="dailyLogChart!.yaxis" [title]="dailyLogChart!.title" [legend]="dailyLogChart!.legend"
         [dataLabels]="dailyLogChart!.dataLabels"></apx-chart>
-</div>
+</div> -->
