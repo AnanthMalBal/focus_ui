@@ -1,10 +1,62 @@
 <div class="card card-xxl-stretch mb-5 mb-xxl-8">
-    <div class="card-header border-0 pt-5">
-        <ul class="nav">
-            <li class="nav-item"><a data-bs-toggle="tab"
-                    class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 show active">
-                    Weekly </a></li>
-            <li class="nav-item"><a data-bs-toggle="tab"
+    <div class="card-header border-0 pt-5 ">
+        <div class="card-toolbar">
+
+            <input
+            class="form-control "
+            ngxDaterangepickerMd
+            [ranges]="ranges"
+            [(ngModel)]="selectedRange"
+            (ngModelChange)="onDateRangeSelected($event)"
+            [autoApply]="true"
+            [showDropdowns]="true"
+            [opens]="'left'"
+          />
+          <span><i class="ki-duotone ki-calendar-8 text-gray-500 lh-0 fs-2 ms-2 me-0"></i></span>
+
+
+            <!-- <div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left"
+                class="btn btn-sm btn-light d-flex align-items-center px-4" id="kt_daterangepicker_1" data-kt-initialized="1">
+                begin::Display range
+                <div class="text-gray-600 fw-bold">23 Jan 2025 - 21 Feb 2025</div>
+                end::Display range
+
+                <i class="ki-duotone ki-calendar-8 text-gray-500 lh-0 fs-2 ms-2 me-0"><span class="path1"></span><span
+                        class="path2"></span><span class="path3"></span><span class="path4"></span><span
+                        class="path5"></span><span class="path6"></span></i>
+            </div> -->
+        </div>
+    </div>
+<!-- <div class="chart-container mt-5">
+    <apx-chart [series]="chartOptions!.series" [chart]="chartOptions!.chart" [xaxis]="chartOptions!.xaxis"
+        [yaxis]="chartOptions!.yaxis" [title]="chartOptions!.title" [legend]="chartOptions!.legend"
+        [dataLabels]="chartOptions!.dataLabels"></apx-chart>
+</div>
+</div> -->
+
+
+ <div class="piechart">
+    <apx-chart style="margin-top:20px ;" [series]="pieChartOptions.series" [chart]="pieChartOptions.chart"
+        [title]="pieChartOptions!.title" [labels]="pieChartOptions.labels" [colors]="pieChartOptions.colors"
+        [responsive]="pieChartOptions.responsive"></apx-chart>
+</div>
+
+
+        <!-- <div class="nav">
+            <button *ngFor="let period of periodicArray"
+                class="btn btn-sm btn-color-muted btn-active fw-bolder btn-light-primary nav-item justify-content-start "
+                [ngClass]="{'btn-active': selectedPeriod === period}" (click)="selectPeriod(period)">
+                {{ period }}
+            </button>
+        </div> -->
+
+        <!-- <ul class="nav-link" >
+            <li class="nav-item"  [ngClass]="{'btn-active': selectedPeriod === 'Weekly'}" (click)="selectPeriod('Weekly')">
+                <a data-bs-toggle="tab"
+                    class=" btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 show active">
+                    Weekly </a></li> 
+            <li class="nav-item" [ngClass]="{'btn-active': selectedPeriod === 'Monthly'}" (click)="selectPeriod('Monthly')">
+                <a data-bs-toggle="tab"
                     class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1">
                     Monthly </a></li>
             <li class="nav-item"><a data-bs-toggle="tab"
@@ -12,28 +64,5 @@
                     Quaterly </a></li>
             <li class="nav-item"><a data-bs-toggle="tab"
                     class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4">
-                    Yearly </a></li>
-        </ul>
-        <div class="card-toolbar">
-
-        </div>
-    </div>
-    <div class="chart-container mt-5">
-        <apx-chart [series]="chartOptions!.series" [chart]="chartOptions!.chart" [xaxis]="chartOptions!.xaxis"
-            [yaxis]="chartOptions!.yaxis" [title]="chartOptions!.title" [legend]="chartOptions!.legend"
-            [dataLabels]="chartOptions!.dataLabels"></apx-chart>
-    </div>
-</div>
-
-
-<!-- <div class="piechart">
-    <apx-chart style="margin-top:20px ;" [series]="pieChartOptions.series" [chart]="pieChartOptions.chart"
-        [title]="pieChartOptions!.title" [labels]="pieChartOptions.labels" [colors]="pieChartOptions.colors"
-        [responsive]="pieChartOptions.responsive"></apx-chart>
-</div>
-
-<div class="dailyLogChart">
-    <apx-chart [series]="dailyLogChart!.series" [chart]="dailyLogChart!.chart" [xaxis]="dailyLogChart!.xaxis"
-        [yaxis]="dailyLogChart!.yaxis" [title]="dailyLogChart!.title" [legend]="dailyLogChart!.legend"
-        [dataLabels]="dailyLogChart!.dataLabels"></apx-chart>
-</div> -->
+                    Yearly </a></li> 
+         </ul>  -->

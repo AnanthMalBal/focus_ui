@@ -139,7 +139,7 @@ export class LmscalendarComponent {
     // Repeat check every 10 minutes (600,000 ms)
     this.notificationInterval = setInterval(() => {
       this.checkAttendance();
-    }, 10000);
+    }, 600000);
   }
 
   showSuccess() {
@@ -164,16 +164,17 @@ export class LmscalendarComponent {
           console.log('Attendance Data:', attendanceData);
   
           // If attendance is recorded, stop the notifications
-          if (attendanceData || attendanceData.length > 0) {
-            console.log('Attendance marked, stopping reminders.');
-            clearInterval(this.notificationInterval); // Stop the repeating check
-          } else {
+          if (!attendanceData || Object.keys(attendanceData).length === 0) {
             console.log('Attendance not marked, showing reminder.');
             this.toastr.show(
               'You have not marked your attendance yet!',
               'Attendance Reminder',
               { positionClass: "toast-top-left" }
             );
+          } else {
+            console.log('Attendance marked, stopping reminders.');
+            clearInterval(this.notificationInterval); // Stop the repeating check
+            
           }
         },
         (error) => {

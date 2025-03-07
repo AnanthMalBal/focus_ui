@@ -25,9 +25,10 @@ export class ReportsService {
       );
   }
 
-  getReportChartById(): Observable<any> {
-    console.log("employee reports by id");
-    return this.http.get(`${environmentpath.getEmpChartById}`+this.id)
+  getReportChartById(role:any,from:any,to:any): Observable<any> {
+    console.log("employee reports by id",role,from,to);
+    const bodyData={"empType":role,"fromDate":from,"toDate":to};
+    return this.http.post(`${environmentpath.getEmpChartById}`, {"empType":role,"fromDate":from,"toDate":to})
       .pipe(
         tap(result => console.log("employee reports by id:", result)),
         catchError(error => {
@@ -37,9 +38,9 @@ export class ReportsService {
       );
   }
 
-  getdailyLog(): Observable<any> {
+  getdailyLog(role:any,from:any,to:any): Observable<any> {
     console.log("daily log entry");
-    return this.http.get(`${environmentpath.getDailyLogEntry}`)
+    return this.http.post(`${environmentpath.getDailyLogEntry}`, {"empType":role,"fromDate":from,"toDate":to})
       .pipe(
         tap(result => console.log("daily log entry", result)),
         catchError(error => {

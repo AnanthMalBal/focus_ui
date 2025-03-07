@@ -31,8 +31,8 @@ export const environmentpath={
   getLeaveBalance:"http://localhost:9100/stashook/getLeaveBalance",
 
   getEmpChart:"http://localhost:3000/leave",
-  getEmpChartById:"http://localhost:3000/leave?empId=",
-  getDailyLogEntry:"http://localhost:3000/dailyLogEntry",
+  getEmpChartById:"http://localhost:9100/stashook/leaveReport",
+  getDailyLogEntry:"http://localhost:9100/stashook/dailylogReport",
 
   // searchCustomer :'http://localhost:9201/stashook/searchCustomer',
   // addCustomer :'http://localhost:9201/stashook/addCustomer',

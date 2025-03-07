@@ -1,0 +1,16 @@
+<div class="card card-xxl-stretch mb-5 mb-xxl-8">
+    <div class="card-header border-0 pt-5 ">
+        <div class="card-toolbar">
+
+            <input class="form-control " ngxDaterangepickerMd [ranges]="ranges" [(ngModel)]="selectedRange"
+                (ngModelChange)="onDateRangeSelected($event)" [autoApply]="true" [showDropdowns]="true"
+                [opens]="'left'" />
+            <span><i class="ki-duotone ki-calendar-8 text-gray-500 lh-0 fs-2 ms-2 me-0"></i></span>
+        </div>
+    </div>
+    <div class="chart-container mt-5">
+        <apx-chart [series]="chartOptions!.series" [chart]="chartOptions!.chart" [xaxis]="chartOptions!.xaxis"
+            [yaxis]="chartOptions!.yaxis" [title]="chartOptions!.title" [legend]="chartOptions!.legend"
+            [dataLabels]="chartOptions!.dataLabels"></apx-chart>
+    </div>
+</div>

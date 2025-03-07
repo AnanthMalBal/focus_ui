@@ -12,7 +12,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { EmployeeReportsComponent } from './components/employee-reports/employee-reports.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ToastrModule } from 'ngx-toastr';
-
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [],
@@ -27,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     EmployeeReportsComponent,
     FullCalendarModule,
     NgApexchartsModule,
+    NgxDaterangepickerMd.forRoot(),
     ToastrModule.forRoot({  // Global Toastr Configuration
       timeOut: 5000,  // Auto close time (3 sec)
       positionClass: 'toast-top-center', // Position of toast

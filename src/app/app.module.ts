@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ToastrModule } from 'ngx-toastr'; 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
@@ -58,6 +59,7 @@ function appInitializer(authService: AuthService) {
     NgbModule,
     LmsModule,
     NgApexchartsModule,
+    BsDatepickerModule.forRoot(), 
     ToastrModule.forRoot({  // Global Toastr Configuration
       timeOut: 5000,  // Auto close time (3 sec)
       positionClass: 'toast-center-center', // Position of toast

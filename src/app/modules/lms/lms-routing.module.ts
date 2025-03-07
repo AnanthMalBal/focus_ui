@@ -6,6 +6,8 @@ import { LeavehistoryComponent } from './components/leavehistory/leavehistory.co
 import { LmscalendarComponent } from './components/lmscalendar/lmscalendar.component';
 import { TimesheetComponent } from './components/timesheet/timesheet.component';
 import { EmployeeReportsComponent } from './components/employee-reports/employee-reports.component';
+import { TeamReportComponent } from './components/team-report/team-report.component';
+import { DailylogReportComponent } from './components/dailylog-report/dailylog-report.component';
 
 const routes: Routes = [
 
@@ -13,7 +15,10 @@ const routes: Routes = [
     { path: 'approveleave', component: LeavehistoryComponent },
     { path: 'lmscalendar', component: LmscalendarComponent },
     { path: 'myattendance', component: TimesheetComponent },
-    { path: 'reports', component: EmployeeReportsComponent }
+    { path: 'reports', component: EmployeeReportsComponent },
+    { path: 'teamreports', component: TeamReportComponent },
+    { path: 'dailylogreport', component: DailylogReportComponent }
+
 
 ];
 
